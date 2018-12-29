@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /
+permalink: /nlp/
 title: "Latest Posts"
 image:
     feature: cover.jpeg
@@ -9,7 +9,8 @@ image:
 ---
 
 <div class="tiles">
-{% for post in site.posts %}
+{% for post in site.categories.nlp %}
 	{% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->
+

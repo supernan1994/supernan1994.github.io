@@ -1,6 +1,16 @@
 # Site navigation links
 
-- title:
-  url:
+- title: home
+  url: /
+  excerpt:
+  image:
+
+- title: nlp
+  url: /nlp/
+  excerpt:
+  image:
+
+- title: architect
+  url: /architect/
   excerpt:
   image:
