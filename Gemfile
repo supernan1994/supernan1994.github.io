@@ -1,7 +1,7 @@
-source 'https://rubygems.org'
-gemspec
+# Skinny Bones Gemfile
+source "https://rubygems.org"
 
-gem 'jekyll'
-gem 'jekyll-paginate'
-gem 'kramdown'
-gem 'pygments.rb'
+gem "jekyll"
+gem "jekyll-sitemap"
+gem "jekyll-gist"
+gem "jekyll-feed"
