@@ -105,6 +105,7 @@ li code {
 	background-color: lighten($primary-color, 95);
 	border-radius: $border-radius;
 }
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit; color: inherit}
 
 /*
    Media and embeds
@@ -394,3 +395,4 @@ nav {
 b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td, .highlight {
 	@include transition (color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out, border-color 0.2s ease-out);
 }
+
