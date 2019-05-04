@@ -21,7 +21,7 @@ tags: [management]
 [GitPrime](https://www.gitprime.com)是一家做企业服务的公司。基于对工程团队代码仓库的pull request和code review的数据统计，GitPrime可以产出直观的图表，帮助管理者更高效的发现团队内部存在的问题。  
 GitPrime认为高效的管理者会把团队看做有多个模块相互依赖的系统，每个模块都有自己的输入和输出。当输入和输出不符合预期时，『数据』可以在探索问题的根本原因的过程中产生重要价值。[20 Patterns to Watch for in Your
 Engineering Team](https://resources.gitprime.com/books/20-patterns/)这本书是GitPrime与上百家公司的合作时，总结出来的20个常见的工作模式。他们希望这本书可以帮助团队更好的认识成就、发现瓶颈，用数据驱动的方式debug研发流程。  
-这篇文章主要是基于我的理解对这本书进行的翻译和归纳。  
+这篇文章主要是基于我的理解对这本书进行的翻译和提炼。  
 
 ## 1. 个人层面的工作模式
 
@@ -77,9 +77,9 @@ Engineering Team](https://resources.gitprime.com/books/20-patterns/)这本书是
     - 让资深工程师说明什么是目前阶段足够好的实现，避免过度设计
     - 如果问题对当前工程师来说比较困难，找另外一个工程师一起完成
 
-### 模式4：准确的commit (Bullseye Commits)
+### 模式4：百发百中 (Bullseye Commits)
 <div align="center"><img width="50%" height="50%" src="2019-05-03-20-pattern-in-engineer-team/bullseye-commits.png"/></div>
-准确的commit是日常工作中最常见的。它指：工程师理解需求，并将需求很好的拆分，提交的代码基本不需要修改。
+这种情况指：工程师能够很好的理解需求，并将需求拆分为小的任务，提交的代码基本不需要修改。
 
 **1）如何发现他们？**
 - 提前完成，而不是到截止日期才提交
@@ -103,7 +103,7 @@ Engineering Team](https://resources.gitprime.com/books/20-patterns/)这本书是
 **1）如何发现他们？**
 - 代码提交的比较晚
 - 自己合并PR
-- 很少接受别人的review建议（也有可能时其他人很少能提出有效建议）
+- 很少接受别人的review建议（也有可能是其他人很少能提出有效建议）
 <div align="center"><img width="50%" height="50%" src="2019-05-03-20-pattern-in-engineer-team/heroing-statistic.png"/></div>
 
 **2）如何处理这种情况？**
