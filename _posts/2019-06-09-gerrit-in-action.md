@@ -614,7 +614,7 @@ To ssh://172.17.202.23:29418/test-webhook
 | 文件A | A1 | **A2** | **A3** |
 | **Patch2** | **change1** | **change2** | **change3** |
 | ------ | ------ | ------ | ------ | 
-| 文件A | **A4** | **merge(A2&A4) = A5** | - |
+| 文件A | **A4** | **rebase(A4 on A2) = A5** | - |
 
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600961466966.jpg"/></div>
 
@@ -672,7 +672,7 @@ To ssh://172.17.202.23:29418/test-webhook
 | 文件A | A1 | **A2** | **A3** |
 | **Patch2** | **change1** | **change2** | **change3** |
 | ------ | ------ | ------ | ------ | 
-| 文件A | **A4** | **merge(A2&A4) = A5** | **merge(A3&A5) = A6** |
+| 文件A | **A4** | **rebase(A4 on A2) = A5** | **rebase(A5 on A3) = A6** |
 
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600961693214.jpg"/></div>
 
@@ -749,7 +749,7 @@ To ssh://172.17.202.23:29418/test-webhook
 | 文件A | success | conflict |
 | **Patch2** | **change1** | **change2** |
 | ------ | ------ | ------ |
-| 文件A | - | **merge(A1&A2) = A3** |
+| 文件A | - | **rebase(A1 on A2) = A3** |
 
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600995533529.jpg"/></div>
 
