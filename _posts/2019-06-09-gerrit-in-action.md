@@ -418,10 +418,10 @@ bfe60ee 等待被修改的change
 
 ### 4. 修改已提交的change
 开发者正常提交了一个change到gerrit，reviewer看过之后觉得有些地方需要修改，这个时候开发者需要修完之后继续提交新的patchset到原来的change里，方便reviewer对比。
-主要分三种情况：
-1）修改的change是最后一个change，后面再没有修改了
-2）修改的change后面还有其他change，改完需要把这个修改同步到后面的change上，这种情况比较复杂
-3）修改的change后面还有其他change，改完需要把这个修改同步到后面的change上，但最新的改动和后面的change有冲突，复杂程度MAX
+主要分三种情况：  
+1）修改的change是最后一个change，后面再没有修改了  
+2）修改的change后面还有其他change，改完需要把这个修改同步到后面的change上，这种情况比较复杂  
+3）修改的change后面还有其他change，改完需要把这个修改同步到后面的change上，但最新的改动和后面的change有冲突，复杂程度MAX  
 
 #### 4.1 修改最新提交的change
 假设现在正常提交了一个change：
