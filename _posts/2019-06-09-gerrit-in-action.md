@@ -50,7 +50,7 @@ gerrit是google内部的code review工具，选择gerrit的原因有以下几点
 
 ## 四、踩坑指南
 
-gerrit是git的超集，实操过程中会遇到很多问题，解决起来学习曲线比较陡峭。因此这篇文章整理了一下常见问题，给出解决方案。过程中会涉及一些原理。
+gerrit是git的超集，实操过程中会遇到很多问题，解决起来学习曲线比较陡峭。因此本节整理了一下常见问题，给出解决方案。过程中会涉及一些原理。
 
 ### 1. 处理gerrit和gitlab不同步
 gerrit做code review的原理：当开发者提交一个change时，相当于在gerrit上的**临时分支**提交代码。比如在master修改后提交change等待review，实际上代码提交到了refs/for/master分支上。review完submit的时候，代码才会真正提交到master上。
