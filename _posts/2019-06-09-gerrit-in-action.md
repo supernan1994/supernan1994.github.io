@@ -77,7 +77,7 @@ gerrit的gitlab插件会将gitlab作为gerrit的slave，每隔几秒就把最新
 change id是gerrit change的唯一标识。每一个change id代表一个code review的请求。在向gerrit push代码时，我们经常会遇到missing Change-Id in message footer的报错。主要有两个原因：
 #### 2.1. git clone的时候没有选择带git hook的方式
 每次git commit的时候git会自动执行.git/hooks/commit-msg脚本，为commit添加change id。这个.git/hooks/commit-msg脚本是在clone仓库的时候一起下载下来的。
-<div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15588556985206.jpg"/></div>
+<div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/企业微信截图_b53cb3df-2f41-4f7d-944a-94a29cf271ad.png"/></div>
 
 如果没有使用带hook的地址clone代码，push时会报错：
 ```
@@ -103,7 +103,7 @@ error: failed to push some refs to 'http://mengnan@172.17.202.23:29419/a/test-we
 ```
 如果想正确提交代码，需要根据报错提示执行操作：
 ```
-▶ gitdir=$(git rev-parse --git-dir);scp -p -P 29418 {username}@gerrit.laiye.com:hooks/commit-msg${项目名}/hooks/
+▶ gitdir=$(git rev-parse --git-dir);scp -p -P 29418 {username}@172.17.202.23:hooks/commit-msg${项目名}/hooks/
 commit-msg                                                                                                                                                                100% 1521    70.3KB/s   00:00
 ▶ git commit --amend --no-edit #手动给前一个请求加上change id
 [master a5822f8] add one line
