@@ -9,7 +9,7 @@ tags: [management]
 ---
 
 > 文章欢迎转载，但转载时请保留本段文字，并置于文章的顶部。  
-> 作者：supernan1994，[原文地址](https://supernan1994.github.io/nlp/wmd1.html)
+> 作者：supernan1994，[原文地址](https://supernan1994.github.io/management/20-pattern-in-engineer-team.html)
 
 ----
 * any list
