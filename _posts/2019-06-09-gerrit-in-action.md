@@ -563,7 +563,7 @@ To ssh://172.17.202.23:29418/test-webhook
 
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600955437098.jpg"/></div>
 
-如果这时合并了change1，会发现change2冲突了，即使change1和change2没有修改同一行代码。这是因为对于change1 patch2修改的代码行，已经合并合并的change1 patch2的代码和change2上的代码是不一样的。我们可以在合并change1之前把change2和change3调整为基于change1的patch2，否则合并后解决冲突就请参照4.3吧。
+如果这时合并了change1，会发现change2冲突了，即使change1和change2没有修改同一行代码。这是因为对于change1 patch2修改的代码行，已经合并的change1 patch2的代码和change2上的代码是不一样的。我们可以在合并change1之前把change2和change3调整为基于change1的patch2，否则合并后解决冲突就请参照4.3吧。
 
 <div align="center"><img width="70%" height="70%" src="2019-06-09-gerrit-in-action/15600968431547.jpg"/></div>
 
