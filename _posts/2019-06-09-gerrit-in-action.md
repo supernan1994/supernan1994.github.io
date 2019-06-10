@@ -126,8 +126,8 @@ remote:   http://172.17.202.23:29419/c/test-webhook2/+/24 add one line
 To http://172.17.202.23:29419/a/test-webhook2
  * [new branch]      HEAD -> refs/for/master
 ```
-#### 2.2. ide的某些自动操作不会触发git hook
-比如在goland上pull+自动merge的时候git hook自动加上了change id，然后goland又追加了merge冲突的文件名，这样change id不在最后一行，gerrit识别不出来会报错。
+#### 2.2. 某些自动操作不会触发git hook
+比如pull+自动merge的时候git hook加上了change id，然后又自动追加了merge冲突的文件名，这样change id不在最后一行，gerrit识别不出来会报错。
 ```
 commit 7104c75d78562df974d6b60183d2b8d27cbced43 (HEAD)
 Merge: e7a3fb5 6d6fa16
@@ -325,7 +325,7 @@ To ssh://172.17.202.23:29418/test-webhook
 ```
 
 #### 3.2. 合并多个commit
-有时当我们使用ide来git pull/git merge的时候，ide会自动生成没有加amend的commit，夹在多个commit中间（见2.3节的情况）；或者commit忘记加--amend的时候，在提交gerrit的时候会变成多个changes。我们可以用rebase操作合并多个commit。
+有时当我们git pull/git merge的时候，解决冲突后，会自动生成没有加change id的commit，夹在多个commit中间（见2.3节的情况）；或者commit忘记加--amend的时候，在提交gerrit的时候会变成多个changes。我们可以用rebase操作合并多个commit。
 
 假如现在有三个commit(19e38cb, 4bea9f9, 710b142)我们希望合并为一个commit:
 
