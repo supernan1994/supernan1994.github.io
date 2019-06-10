@@ -126,7 +126,7 @@ remote:   http://172.17.202.23:29419/c/test-webhook2/+/24 add one line
 To http://172.17.202.23:29419/a/test-webhook2
  * [new branch]      HEAD -> refs/for/master
 ```
-#### 2.2. 某些自动操作不会触发git hook
+#### 2.2. 某些操作不会自动添加change id
 比如pull+自动merge的时候git hook加上了change id，然后又自动追加了merge冲突的文件名，这样change id不在最后一行，gerrit识别不出来会报错。
 ```
 commit 7104c75d78562df974d6b60183d2b8d27cbced43 (HEAD)
