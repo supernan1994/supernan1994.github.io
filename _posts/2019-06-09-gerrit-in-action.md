@@ -18,9 +18,10 @@ tags: [management]
 ----
 
 ## 一、意义
+code review对于工程团队具有很多工程意义：
 1. 提升代码质量
 2. 知识共享
-3. 找到问题的更优解
+3. 找到问题的更优解 
 4. 促进团队合作和获取指导资源的渠道
 
 ## 二、选型原因
@@ -196,6 +197,7 @@ To ssh://172.17.202.23:29418/test-webhook
 7a1edf0 (origin/master, origin/HEAD) 第二次提交
 ea24f1d 第一次提交
 ```
+
 处理这样的情况，一般有两种方式：
 ##### 2.3.1. 多个commit需要分开提交到多个change
 我们需要check到没有change id的commit，添加change id后手动提交。我们先提交ea24f1d和4f99a0e两个commit。
@@ -501,6 +503,17 @@ To ssh://172.17.202.23:29418/test-webhook
 
 <div align="center"><img width="70%" height="70%" src="2019-06-09-gerrit-in-action/15600967883166.jpg"/></div>
 
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | A1 | A1 |
+| 文件B | B1 | **B2** | **B2** |
+| 文件C | C1 | C1 | **C2** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | - | - | - |
+| 文件B | - | - | - |
+| 文件C | - | - | - |
+
 ```
 ▶ git log --oneline
 96dc449 (HEAD -> master) 第三次提交
@@ -532,6 +545,17 @@ To ssh://172.17.202.23:29418/test-webhook
 
 我们按照4.1节的操作，修复这个bug。
 
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | A1 | A1 |
+| 文件B | B1 | **B2** | **B2** |
+| 文件C | C1 | C1 | **C2** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | **A2** | - | - |
+| 文件B | B1 | - | - |
+| 文件C | C1 | - | - |
+
 <div align="center"><img width="70%" height="70%" src="2019-06-09-gerrit-in-action/15600973194533.jpg"/></div>
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600954825090.jpg"/></div>
 
@@ -545,6 +569,17 @@ To ssh://172.17.202.23:29418/test-webhook
 
 我们可以进入change2页面，点击右上角rebase，大功告成。
 
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | A1 | A1 |
+| 文件B | B1 | **B2** | **B2** |
+| 文件C | C1 | C1 | **C2** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | **A2** | **A2** | **A2** |
+| 文件B | B1 | **B2** | **B2** |
+| 文件C | C1 | C1 | **C2** |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600958557818.jpg"/></div>
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600958676482.jpg"/></div>
 
@@ -555,8 +590,17 @@ To ssh://172.17.202.23:29418/test-webhook
 
 
 #### 4.3 有其他change依赖当前修改的change（发生冲突）
+
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | **A2** | **A3** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | **A4** | - | - |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600961104444.jpg"/></div>
-这种情况其实很容易发生，只要change1的patch1和patch2同时对一行做了修改，由于change2是基于change1的patch1，change1和change2的改动就会不一样，gerrit会认为是冲突的。  
+
+只要change1的patch2和change2的patch1同时对一行做了修改，gerrit会认为是冲突的。  
 - 当change1还没有merge的情况下，在gerrit页面上基于change2 rebase会提示冲突。
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600975723611.jpg"/></div>
 - 当change1已经merge的情况下，change2页面上会直接显示冲突。submit时提示无法合并。
@@ -564,6 +608,14 @@ To ssh://172.17.202.23:29418/test-webhook
 
 我们需要分别在change2和change3上rebase change1最新的改动，在rebase过程中解决冲突。
 先解决change2的冲突：
+
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | **A2** | **A3** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | **A4** | **merge(A2&A4) = A5** | - |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600961466966.jpg"/></div>
 
 ```
@@ -614,6 +666,14 @@ To ssh://172.17.202.23:29418/test-webhook
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600923109691.jpg"/></div>
 
 我们用同样的方法解决change3的冲突，不过这次是需要change3上应用change2。
+
+| **Patch1** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ |
+| 文件A | A1 | **A2** | **A3** |
+| **Patch2** | **change1** | **change2** | **change3** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | **A4** | **merge(A2&A4) = A5** | **merge(A3&A5) = A6** |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600961693214.jpg"/></div>
 
 ```
@@ -664,6 +724,14 @@ To ssh://172.17.202.23:29418/test-webhook
 
 ### 5. 发生冲突
 4.2节中我们主要讨论了对parent change改动引起的冲突，本节我们主要讨论多人改动引起的冲突。
+
+| **Patch1** | **change1** | **change2** |
+| ------ | ------ | ------ |
+| 文件A | A1 | A2 |
+| **Merge** | **change1** | **change2** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | success | conflict |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600995242556.jpg"/></div>
 当两个人同时基于一个分支进行修改，提交了两个冲突的change。
 - 未合并时，gerrit会提示：
@@ -672,6 +740,17 @@ To ssh://172.17.202.23:29418/test-webhook
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600984922812.jpg"/></div>
 
 不管有没有合并，我们都可以用同样的方式解决冲突。
+
+| **Patch1** | **change1** | **change2** |
+| ------ | ------ | ------ |
+| 文件A | A1 | A2 |
+| **Merge** | **change1** | **change2** |
+| ------ | ------ | ------ | ------ | 
+| 文件A | success | conflict |
+| **Patch2** | **change1** | **change2** |
+| ------ | ------ | ------ |
+| 文件A | - | **merge(A1&A2) = A3** |
+
 <div align="center"><img width="100%" height="100%" src="2019-06-09-gerrit-in-action/15600995533529.jpg"/></div>
 
 ```
