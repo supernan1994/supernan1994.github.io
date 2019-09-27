@@ -249,7 +249,7 @@ Cache的数据存放在分布式的hash table里，用photo id作为key。只有
 - 请求发往可写的Store节点：可写的Store节点一般存储的是最新上传的数据，访问量较大；通常磁盘在只读和只写情况下性能较好，读写交错的情况性能不会很好（这个原因没有细说，我理解是只读/只写时做磁盘顺序扫描较多，读写交错需要频繁做随机读写）。
 
 #### 5.1.3 Store
-一台Store机器上可以有多个physical volume，每个100GB，名字叫做`/hay/haystack/_<logical volume id>`，每个volume的文件描述符会被缓存在内存里。Store使用XFS文件系统。小文件按照下图的形式顺序排列在磁盘上：  
+一台Store机器上可以有多个physical volume，每个100GB，名字叫做`/hay/haystack/_<logical volume id>`，每个volume的文件描述符会被缓存在内存里。Store使用XFS[^XFS]文件系统。小文件按照下图的形式顺序排列在磁盘上：  
 
 <div align="center"><img width="100%" height="100%" src="2019-09-20-finding-needle-in-haystack/store-file.png"/></div>
 
