@@ -8,9 +8,6 @@ image: 2019-06-09-gerrit-in-action/cover.jpg
 tags: [management]
 ---
 
-> 文章欢迎转载，但转载时请保留本段文字，并置于文章的顶部。  
-> 作者：supernan1994，[原文地址](https://supernan1994.github.io/management/gerrit-in-action.html)
-
 ----
 * any list
 {:toc}

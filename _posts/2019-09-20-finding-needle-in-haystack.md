@@ -12,10 +12,6 @@ tags: [engineering, paper-reading]
 文中所提出的思想非常简洁，概括来说，作者认为linux的文件系统在读文件时需要做多次的磁盘操作，其中对文件元信息inode的读取操作是限制小文件服务读呑吐量的主要原因。因此作者抛弃了linux文件组织形式，在内存中构建最适合业务特点的自建索引加速查询效率。  
 尽管想法朴素，但Haystack具有很高的商业价值，成为此后海量小文件存储的事实标准。  
 
-
-> 文章欢迎转载，但转载时请保留本段文字，并置于文章的顶部。  
-> 作者：supernan1994，[原文地址](https://supernan1994.github.io/management/gerrit-in-action.html)
-
 ----
 * any list
 {:toc}
