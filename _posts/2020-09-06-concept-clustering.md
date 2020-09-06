@@ -71,4 +71,7 @@ HDBSCAN超参数设置的思路是，保证对当前挖掘出来的专业词汇�
 -1代表没有召回的专业词汇。
 ![](2020-09-06-concept-clustering/clustering_result.png)
 
+聚类可视化：
+![](2020-09-06-concept-clustering/clustered_distribution.png)
+
 撒花🌸~
